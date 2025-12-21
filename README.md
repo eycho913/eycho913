@@ -3,33 +3,48 @@
   
 # 🤖 About me
 
-Robotics Engineering Major  
-Software Developer interested in **Control · Simulation · AI**
+로봇공학 전공 | 소프트웨어 개발자  
+메니퓰레이터 제어 · 운동학 · 시뮬레이션에 관심이 있습니다.
+스마트폰 
 
+---
 
 ## 🛠 Tech Stack
-### Languages
+
+### Core Languages
 ![Python](https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white)
 ![C](https://img.shields.io/badge/C-A8B9CC?style=for-the-badge&logo=c&logoColor=black)
 ![MATLAB](https://img.shields.io/badge/MATLAB-0076A8?style=for-the-badge&logo=mathworks&logoColor=white)
 ![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black)
+
+### Robotics & Simulation
+- Control Systems (PID, State Space)
+- Kinematics & Dynamics
+- Numerical Simulation & Modeling
+- Sensor Data Processing
+
+---
+
+## 🤖 Robotics / Simulation
+- 제어공학 (PID, 상태공간)
+- 로봇 운동학 / 동역학
+- 수치해석 및 시뮬레이션
+- 센서 데이터 처리
 
 ---
 
 ## 📊 GitHub Stats
 ![GitHub Stats](https://github-readme-stats.vercel.app/api?username=YOUR_GITHUB_ID&show_icons=true&theme=tokyonight)
 
-![Top Langs](https://github-readme-stats.vercel.app/api/top-langs/?username=YOUR_GITHUB_ID&layout=compact&theme=tokyonight)
-
 ---
-
-## 📚 Currently Learning
-- Data Structures & Algorithms
-- React & Frontend Architecture
-- Python-based Backend Systems
-
+## Project
+### 📱 스마트폰 센서 데이터 기반 사용자 행동 인식 및 위치 추정 App
+- 가속도계, 자이로스코프 등 스마트폰 센서 데이터 수집 및 전처리
+- DNN 모델을 활용한 사용자 행동 분류 모델 설계 및 학습
+- 센서 데이터 융합을 통한 사용자 보행 감지 & 위치 추정 시스템(PDR:Pedestrian Dead Reckoningn) 구현
+- 학습 모델을 모바일 애플리케이션에 적용
+- 실제 사용자 환경을 고려한 데이터 품질 문제 및 성능 개선 경험
 ---
 
 ## 📫 Contact
-- Email: your_email@example.com
 - GitHub: https://github.com/YOUR_GITHUB_ID
