@@ -1,4 +1,4 @@
-## Hi there 👋
+## 안녕하세요! 조의연입니다.👋
 
 <!--
 **eycho913/eycho913** is a ✨ _special_ ✨ repository because its `README.md` (this file) appears on your GitHub profile.
