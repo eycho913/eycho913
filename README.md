@@ -17,11 +17,6 @@
 ![MATLAB](https://img.shields.io/badge/MATLAB-0076A8?style=for-the-badge&logo=mathworks&logoColor=white)
 ![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black)
 
-### Robotics & Simulation
-- Control Systems (PID, State Space)
-- Kinematics & Dynamics
-- Numerical Simulation & Modeling
-- Sensor Data Processing
 
 ---
 
@@ -30,11 +25,12 @@
 - 로봇 운동학 / 동역학
 - 수치해석 및 시뮬레이션
 - 센서 데이터 처리
+- GPS/ 위치 추정 항법
 
 ---
 
 ## 📊 GitHub Stats
-![GitHub Stats](https://github-readme-stats.vercel.app/api?username=YOUR_GITHUB_ID&show_icons=true&theme=tokyonight)
+![GitHub Stats](https://github-readme-stats.vercel.app/api?username=eycho913&show_icons=true&theme=tokyonight)
 
 ---
 ## Project
@@ -47,4 +43,5 @@
 ---
 
 ## 📫 Contact
-- GitHub: https://github.com/YOUR_GITHUB_ID
+- GitHub: https://github.com/eycho913
+- Mail: eycho96@gmail.com
