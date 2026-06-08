@@ -8,7 +8,7 @@
 ---
 
 ## **1. Executive Summary: Connecting the Dots**
-> **"인간 상태 및 보행 상황 인지(HAR) 기술에서 양팔 휴머노이드 로봇의 다관절 조작(Dexterous Manipulation) 지능으로"**
+> **"인간 상태 및 보행 상황 인지(HAR) 기술에서 휴머노이드 로봇의 다관절 조작(Dexterous Manipulation) 지능으로"**
 
 학사 및 석사 과정 동안 스마트기기 기반의 관성 센서(IMU) 신호와 무선 환경 신호(GPS, WiFi)를 융합하여, **Extended Kalman Filter (EKF) 및 딥러닝 기반의 인간 동작 인식(HAR) 및 하이브리드 보행 항법 시스템**을 연구하였습니다.
 
