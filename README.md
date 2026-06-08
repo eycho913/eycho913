@@ -3,11 +3,11 @@
 
 # 🤖 About me
 
-**로봇공학 전공 | 로봇 SW 및 AI 제어 연구원**  
-가상현실(VR) 텔레오퍼레이션, 고자유도 휴머노이드 로봇 제어, 모방 학습(Imitation Learning) 및 강화학습(RL), 그리고 센서 융합(Sensor Fusion) 기술에 관심이 있습니다.
+**로봇공학 전공 | 휴머노이드 보행 및 제어 연구원**  
+가상현실(VR) 텔레오퍼레이션, 고자유도 휴머노이드 로봇의 **이족 보행(Bipedal Locomotion)** 및 전신 제어(Whole-Body Control, WBC), 그리고 칼만 필터 기반의 **Floating Base State Estimation**에 깊은 관심을 가지고 연구를 진행하고 있습니다.
 
 - 📧 **Email:** eycho96@gmail.com
-- 💼 **Research Interests:** Dual-Arm Humanoid Control, Dexterous Manipulation, VR Teleoperation (Vuer/OpenXR), Imitation Learning (BC, ACT), Extended Kalman Filter (EKF), State Estimation.
+- 💼 **Research Focus:** Humanoid Locomotion & Walking, Floating Base State Estimation, Whole-Body Control (WBC), VR-based Teleoperation & Imitation/Reinforcement Learning.
 
 ---
 
@@ -34,9 +34,10 @@
 ---
 
 ## 🤖 Research & Focus Areas
-- **Control Theory:** PID, State-Space Control, Swerve Drive Odometry.
-- **Robot Kinematics & Dynamics:** Joint Trajectory Generation, Differential Inverse Kinematics.
-- **Sensor Fusion:** Extended Kalman Filter (EKF) based Hybrid Navigation, IMU & GNSS Sensor Processing.
+- **Bipedal Locomotion:** Gait Phase Detection, Ground Reaction Force (GRF) Control, ZMP, WBC.
+- **State Estimation:** Extended Kalman Filter (EKF), Floating Base State Estimation, IMU & Foot Contact Sensor Fusion.
+- **Embedded Systems:** STM32 MCU, BLE (Bluetooth Low Energy), SPI/I2C Sensor Interfacing & C Firmware.
+- **Control Theory:** Model Predictive Control (MPC) for walking, Swerve Drive Odometry.
 - **Robot Learning:** Behavior Cloning (BC), Action Chunking with Transformers (ACT), Reinforcement Learning (PPO).
 
 ---
@@ -49,14 +50,14 @@
 ## 📂 Featured Projects
 
 ### 1️⃣ VR Teleoperation & Imitation Learning based Dual-Arm Humanoid (SH5) Dexterous Manipulation
-> **가상현실(VR) 원격 조작과 Transformer 기반 모방 학습을 활용한 양팔 휴머노이드 로봇의 물류 분류 시스템**
+> **가상현실(VR) 원격 조작과 Transformer 기반 모방 학습을 활용한 양팔 휴머노이드 로봇의 제어 시스템**
 
 *   **Period:** 2026.06 ~ Present
 *   **Tech Stack:** `Python`, `ROS 2`, `Isaac Sim / IsaacLab`, `PyTorch`, `Vuer (WebXR)`, `Docker`
 *   **Key Implementations:**
-    *   **High-DOF Mapping:** WebXR 및 OpenXR 인터페이스를 설계하여 작업자의 HMD 및 양손 컨트롤러 모션을 로봇의 63자유도(Swerve Base, Prismatic Lift, 양팔 및 26-DOF 다관절 핸드)로 실시간 매핑 (Differential IK 연동).
-    *   **Data Pipeline & Logger:** 147차원 Observation(로봇/상자/작업대 Pose + 관절 상태) 및 66차원 Action(조향 명령 + 관절 타겟) HDF5 전문가 데이터 로거 개발. 비동기 백그라운드 키보드 폴러를 통한 에피소드 제어 최적화.
-    *   **물리 엔진 안정화:** 다관절 손가락과 상자 간의 슬립(Slipping)을 해결하기 위해 손바닥 로컬 좌표계 오프셋 연산 기반의 **Kinematic Holding (Magic Snapping)** 알고리즘 독자 개발 및 물리 튜닝.
+    *   **High-DOF Mapping:** WebXR 및 OpenXR 인터페이스를 설계하여 작업자의 HMD 및 양손 컨트롤러 모션을 로봇의 63자유도(Swerve Base, Prismatic Lift, 양팔 및 26-DOF 다관절 핸드)로 실시간 매핑.
+    *   **Data Pipeline & Logger:** 147차원 Observation(로봇/상자/작업대 Pose + 관절 상태) 및 66차원 Action(조향 명령 + 관절 타겟) HDF5 전문가 데이터 로거 개발.
+    *   **물리 엔진 안정화:** 다관절 손가락과 상자 간의 슬립(Slipping)을 해결하기 위해 손바닥 로컬 좌표계 오프셋 연산 기반의 **Kinematic Holding (Magic Snapping)** 알고리즘 독자 개발.
     *   **ACT (Action Chunking with Transformers) 정책 학습:** 과거 10프레임 상태 이력을 인코딩하여 미래 20프레임 액션 시퀀스를 일괄 예측하는 ACT 모델(`train_act.py`) 구축.
     *   **Phase-Aware Data Augmentation:** 그리퍼 파지 시점(`grasp_frame`) 전후로 코사인 보간법을 적용하는 궤적 오프셋 데이터 증강 툴 개발 및 승강 관절(`lift_joint`) 하드웨어 범위 한계 분석 검증.
 
@@ -78,11 +79,12 @@
 > **DNN 기반 사용자 행동 인식 및 EKF 다중 측위 융합 모바일 애플리케이션 개발 (석사 학위 논문 & JPNT 게재)**
 
 *   **Period:** 학사 / 석사 과정
-*   **Tech Stack:** `Java (Android)`, `Python`, `MATLAB`, `Android SDK`
-*   **Key Implementations:**
+*   **Tech Stack:** `Java (Android)`, `Python`, `MATLAB`, `Android SDK`, `STM32`, `C (Firmware)`
+*   **Key Connections to Humanoid Locomotion:**
+    *   본 연구에서 수립한 **"가속도 센서 기반 DNN 보행 분석 및 EKF 위치 보정"** 기술은 휴머노이드 로봇이 보행 시 지면 접촉 센서 없이 관성 센서 신호 패턴만으로 Swing/Stance Phase를 판별하는 **Gait Phase Estimator** 및 로봇의 CoM 위치와 자세를 실시간으로 추정하는 **Floating Base State Estimation** 설계로 이어집니다.
     *   **DNN 기반 Non-walking 신호 필터링:** 스마트폰 가속도 센서 특징값(표준편차, 최소값, Zero Crossing Rate 등 12개 입력 피처)을 추출하여 제자리걸음 등 위치 이동이 없는 비보행 신호를 분류·차단하는 DNN 모델 설계.
     *   **EKF 센서 융합:** 실외 GPS(DOP 가중치 반영) 및 실내 WiFi Fingerprinting 위치 데이터를 측정치로 활용하고, PDR(보행자 데드레코닝)을 시스템 모델로 구성한 **Extended Kalman Filter (EKF)** 위치 추정 알고리즘 개발.
-    *   **실증 구현:** Java 기반 Android 앱으로 설계하여 실내외 하이브리드 테스트 베드에서 오차 감소 성능을 검증하고, 모바일 환경에서의 센서 데이터 품질 개선 경험 확보.
+    *   **실험용 BLE-IMU 센서 노드 자체 설계 및 제작:** 스마트폰 내장 센서 외에 신체 임의 관절의 고주파 관성 데이터를 정밀 측정하기 위해 **STM32 MCU, IMU 센서, BLE 통신 모듈을 결합한 커스텀 무선 센서 디바이스**를 직접 설계·제작하고 펌웨어를 작성하여 무선 데이터 수집 인프라 구축.
 
 ---
 
