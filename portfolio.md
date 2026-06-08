@@ -8,7 +8,7 @@
 ---
 
 ## **1. Executive Summary: Connecting the Dots**
-> **"인간 상태 및 보행 상황 인지(HAR) 기술에서 휴머노이드 로봇의 다관절 조작(Dexterous Manipulation) 지능으로"**
+> **"인간 상태 및 보행 상황 인지(HAR) 기술에서 양팔 휴머노이드 로봇의 다관절 조작(Dexterous Manipulation) 지능으로"**
 
 학사 및 석사 과정 동안 스마트기기 기반의 관성 센서(IMU) 신호와 무선 환경 신호(GPS, WiFi)를 융합하여, **Extended Kalman Filter (EKF) 및 딥러닝 기반의 인간 동작 인식(HAR) 및 하이브리드 보행 항법 시스템**을 연구하였습니다.
 
@@ -28,6 +28,9 @@ graph TD
 *   **고차원 로봇 제어 및 시뮬레이션:** Isaac Sim / IsaacLab을 기반으로 한 63자유도(Swerve Base, Prismatic Lift, 양팔, 손가락 관절) 휴머노이드 시뮬레이션 물리 모델 구축 및 튜닝.
 *   **AI 및 모방 학습 알고리즘:** Behavior Cloning(BC) 및 최신 ACT (Action Chunking with Transformers) 아키텍처 설계와 구현.
 *   **가상 현실 기반 로봇 원격 제어 (Teleoperation):** WebXR (Vuer) 및 OpenXR 기반 63-DOF 실시간 텔레오퍼레이션 데이터 수집 인프라 구축.
+*   **Floating Base State Estimation 역량:** IMU 및 지면 접촉 상태(Contact State)를 융합하여 휴머노이드 CoM(Center of Mass)의 3D 속도 및 자세를 실시간으로 추정하는 칼만 필터(Kalman Filter) 설계 기반 보유.
+*   **이족 보행(Bipedal Locomotion) 제어 및 AI 융합:** ZMP(Zero Moment Point) 기반 제어와 강화학습(PPO)/모방학습(ACT)을 결합하여 다양한 지형에서 안정적으로 동적 균형을 유지하는 이족 보행 정책 구현 능력.
+*   **임베디드 시스템 및 하드웨어 프로토타이핑 역량:** STM32 마이크로컨트롤러(MCU)에 BLE(Bluetooth Low Energy) 통신과 IMU 센서를 통합 연동하여 무선 계측용 실시간 센서 보드를 직접 설계·제작하고 펌웨어를 작성해 본 경험.
 
 ---
 
@@ -47,7 +50,9 @@ graph TD
 *   **Extended Kalman Filter (EKF) 기반 상태 추정:**
     *   실외 환경에서는 GPS 신호(DOP 정보를 활용한 품질 가중치 반영)를, 실내 환경에서는 수신 범위 내 AP들의 RSSI를 활용한 WiFi Fingerprinting 위치 정보를 관측치(Measurement)로 사용.
     *   이동 방위각(자이로 센서 기반 쿼터니언 변환) 및 추정 보폭을 시스템 모델로 하여 2차원 위도·경도 좌표를 연속적으로 갱신하는 EKF 보정 프레임워크 구현.
-*   **실증 성과:** Java 기반 Android 스마트폰 애플리케이션으로 직접 구현하여, 실내외 경계 구간 및 복합 환경에서 필드 테스트를 성공적으로 완수하고 오차 감소 효과를 검증함.
+*   **실증 성과 & 커스텀 센서 보드 제작:** 
+    *   Java 기반 Android 스마트폰 애플리케이션으로 직접 측위 프레임워크를 개발하여 실내외 필드 테스트 완료.
+    *   스마트폰 내장 센서의 한계와 파지 가변성 문제를 해소하고, 신체 임의의 특정 관절(발목 등)에서 고주파 관성 데이터를 정밀 수집하기 위해 **STM32 마이크로컨트롤러, IMU 센서, BLE 무선 모듈을 결합한 실험 전용 무선 센서 모듈**을 하드웨어 설계·납땜 제작하고 C언어 기반 펌웨어(SPI/I2C 통신 및 BLE 스택 연동)를 작성하여 실험 노드로 도입.
 
 ```
 +-------------------------------------------------------------------------+
@@ -128,25 +133,32 @@ graph TD
 
 | 카테고리 | 보유 기술 및 라이브러리 | 숙련도 및 적용 내용 |
 | :--- | :--- | :--- |
+| **Bipedal Locomotion** | Contact State Estimation, Gait Phase Detection, ZMP, WBC | 관성 센서 파형 기반 접촉 판별 기기 설계 및 이족 보행 동역학 기초 |
 | **Robotics & Sim** | Isaac Sim, IsaacLab, ROS 2 (Humble/Jazzy), URDF | 63-DOF 로봇 시뮬레이션 모델 튜닝 및 DDS 통신 최적화 |
 | **State Estimation** | Extended Kalman Filter (EKF), PDR, IMU/GNSS Sensor | 센서 바이어스 보정 및 실내외 하이브리드 보행 항법 필터 설계 |
 | **Deep Learning** | PyTorch, MLP, Transformers, CVAE, Behavior Cloning | 보행 상황 HAR 분류 모델 개발, ACT 모델 구축 |
+| **Embedded & H/W** | STM32, BLE, IMU Sensor, Firmware (C), SPI/I2C | 실험용 맞춤형 무선 센서 디바이스 보드 하드웨어 설계, 제작 및 펌웨어 개발 |
 | **Languages** | Python, C++, Java, Markdown, SQL | Android App 개발(Java), 로봇 시뮬레이션 & ML 학습(Python) |
 | **DevOps & Tools** | Git, Docker, Linux (Ubuntu), HDF5, WebXR/Vuer | 컨테이너 환경 기반 ROS2 파이프라인 구축 및 대용량 데이터 로깅 |
 
 ---
 
 ## **5. Research Vision: Connecting the Simulation to Reality**
-> **"가상현실 원격 조작과 융합 필터를 통한 고자유도 휴머노이드 로봇의 현장 자율화"**
+> **"가상현실 원격 조작과 융합 필터를 통한 고자유도 휴머노이드 로봇의 현장 자율 보행 및 정밀 조작 완수"**
 
-가상현실(VR) 텔레오퍼레이션 기술은 로봇에게 인간의 직관적인 '조작 요령(Heuristics)'을 주입할 수 있는 가장 우수한 통로입니다. 대학원에 진학하여 다루고자 하는 구체적인 연구 주제와 방향은 다음과 같습니다.
+가상현실(VR) 텔레오퍼레이션 기술은 로봇에게 인간의 직관적인 '조작 요령(Heuristics)'을 주입할 수 있는 가장 우수한 통로이며, 이족 보행(Bipedal Locomotion)은 비정형 지형에서 로봇이 유연하게 이동할 수 있도록 돕는 핵심 기술입니다. 대학원에 진학하여 연구하고자 하는 구체적인 주제와 방향은 다음과 같습니다.
 
 ### **1️⃣ Sim2Real Gap 극복을 위한 칼만 필터 기반의 Robust State Estimator 설계**
-*   석사 과정에서 연구했던 **EKF 기반 측위 및 센서 데이터 보정** 기술을 고도화하여, 실제 로봇 센서(IMU, LiDAR, Joint Encoder)의 동적 노이즈와 시뮬레이션 물리 파라미터 간의 차이를 실시간으로 추정·보정하는 강인한 Estimation 시스템을 결합하고자 합니다.
-*   학습된 인공지능 정책(Policy)이 현실의 노이즈와 마찰력 변화에서도 오작동하지 않도록 Domain Randomization 기법과 State Filtering을 통합하는 연구를 수행할 것입니다.
+*   석사 과정에서 연구했던 **스마트폰 IMU 기반 DNN 보행/비보행 분류 및 EKF 기반 측위 기술**을 고도화하여, 실제 로봇 센서(IMU, Joint Encoder, Foot Contact)의 동적 노이즈를 제어하는 강인한 Estimation 시스템을 설계하고자 합니다.
+*   특히 발바닥 접촉 센서의 튀는 현상(Chattering)과 노이즈를 극복하기 위해, 다리 끝 단 관성 센서 신호의 특징점을 파악하여 Swing/Stance Phase를 판별하는 **Gait Phase Estimator**를 결합한 contact-active Kalman Filter를 구현하여 로봇 CoM(Center of Mass)의 3D 자세와 속도를 신뢰성 있게 추정하겠습니다.
+*   학습된 인공지능 정책(Policy)이 현실의 노이즈와 지면 마찰력 변화에서도 오작동하지 않도록 Domain Randomization 기법과 State Filtering을 통합하는 연구를 수행할 것입니다.
 
 ### **2️⃣ ACT 및 시연 기반 강화학습(RL with Demonstrations)의 융합**
 *   가상 환경에서 획득한 인간의 정밀 조작 궤적(HDF5 데이터셋)을 기반으로 자율 주행 및 조작에 대한 초기 행동 가이드라인(ACT/BC)을 수립합니다.
 *   이후, 초기 모방 학습 가중치를 강화학습의 시작점(Expert Initialization)으로 삼고, 환경과의 상호작용을 통해 미세한 상자 크기나 위치 변화에도 대응하는 일반화(Generalization) 성능을 갖춘 **하이브리드 조작 지능**을 완성하고자 합니다.
 
-이러한 연구 로드맵을 바탕으로 차세대 휴머노이드 로봇이 연구실을 넘어 실제 산업 현장과 일상에서 자율적인 물리적 보조(Physical Assistant) 임무를 유기적으로 완수하도록 기여하고 싶습니다.
+### **3️⃣ Whole-Body Control (WBC)을 통한 상체 조작-하체 보행의 동역학적 조율**
+*   상체의 다관절 정밀 조작(Dexterous Manipulation) 시 발생하는 반작용 모멘텀이 하체 이족 보행(Bipedal Locomotion)의 균형에 미치는 영향을 제어하는 전신 제어 프레임워크를 수립하고자 합니다.
+*   작업자가 상체를 조작할 때의 무게 중심(CoM) 변동을 실시간으로 반영하여 Model Predictive Control (MPC) 기반으로 하체 지면반력(Ground Reaction Force, GRF)을 예측 제어함으로써, 보행 중 물체를 들어 올리는 격렬한 작업 상황에서도 로봇이 넘어지지 않는 동적 안정화 기술을 완성하겠습니다.
+
+이러한 연구 로드맵을 바탕으로 차세대 휴머노이드 로봇이 연구실을 넘어 실제 산업 현장과 일상에서 자율적인 물리적 보조(Physical Assistant) 임무를 안전하고 강인하게 완수하도록 기여하고 싶습니다.
